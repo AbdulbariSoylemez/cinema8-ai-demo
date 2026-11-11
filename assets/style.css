@@ -14,17 +14,18 @@
   --accent-yellow: #FAB758;
   --accent-lime: #E4FF78;
 
-  /* Dark surfaces — c8 uses purple-tinted blacks, not neutral */
-  --bg: #16121f;
-  --bg-elev: #1e1929;
-  --bg-elev-2: #241d33;
-  --panel: #1b1627;
-  --border: #2d2740;
-  --border-soft: #241d33;
+  /* Dark surfaces — lifted from near-black into a clearly PURPLE tone
+     (c8 kimliği hissedilsin, "siyah" hissi gitsin) */
+  --bg: #1f1838;
+  --bg-elev: #2a2048;
+  --bg-elev-2: #352858;
+  --panel: #251c40;
+  --border: #3d2f66;
+  --border-soft: #2e2350;
 
   --text: #f4edfb;
-  --text-dim: #a89eb8;
-  --text-faint: #6c6480;
+  --text-dim: #b4a9c9;
+  --text-faint: #7d718f;
 
   --radius: 14px;
   --radius-sm: 10px;
@@ -47,6 +48,15 @@ html, body {
   font-size: 14px;
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
+}
+
+body {
+  background:
+    radial-gradient(ellipse 60% 40% at 80% 0%, rgba(161, 1, 255, 0.10), transparent 60%),
+    radial-gradient(ellipse 50% 40% at 10% 100%, rgba(229, 35, 87, 0.06), transparent 60%),
+    var(--bg);
+  background-attachment: fixed;
+  min-height: 100vh;
 }
 
 a { color: inherit; text-decoration: none; }
@@ -81,19 +91,21 @@ button { font-family: inherit; }
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 28px;
+  padding: 0 40px;
   border-bottom: 1px solid var(--border-soft);
-  background: var(--bg);
+  background: rgba(31, 24, 56, 0.72);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
   position: sticky;
   top: 0;
   z-index: 10;
 }
 
 .content {
-  padding: 28px 28px 60px;
+  padding: 28px 40px 60px;
   flex: 1;
-  max-width: 1400px;
   width: 100%;
+  min-width: 0;
 }
 
 /* ---------- Sidebar ---------- */
