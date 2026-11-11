@@ -118,41 +118,168 @@
     });
   });
 
-  // ---- Showcase hover-to-play videos ----
-  // Lazy src assignment — nothing streams until the user hovers the card,
-  // so the page load stays fast even with 6+ videos on screen.
-  document.querySelectorAll('.showcase-card[data-video]').forEach((card) => {
-    const vid = card.querySelector('video');
-    if (!vid) return;
-    const src = card.dataset.video;
+  // ---- Explore ribbons (mirrors /playground/explore) ----
+  // Data ported from cinema8-admin-v2/src/app/modules/playground/explore/
+  // data/fixtures.js (and avatarShowcase.js). Media URLs are public — same
+  // CDN the real playground uses. Placeholder rows without a videoUrl /
+  // imageUrl are skipped here; the admin paints a gradient for them but a
+  // DEMO page should only advertise outputs the user can actually see.
+  const S3 = 'https://s3.eu-central-1.wasabisys.com/gobito-genai/test/explore';
+  const PROD = 'https://s3.eu-central-1.wasabisys.com/gobito-genai/product-studio/styles';
+  const CDN = 'https://cdn1.cinema8.site/mp4s/100';
 
-    const ensureSrc = () => {
-      if (!vid.src) vid.src = src;
-    };
+  const EXPLORE_CATEGORIES = [
+    {
+      key: 'trending',
+      title: 'Trending',
+      gradient: ['#E91F54', '#FF8D10', '#A101FF'],
+      items: [
+        { id: 't-0', title: 'Trend-1 Rap', size: 'wide', plays: 412000, videoUrl: `${S3}/trending/trend_1_rap.mp4` },
+        { id: 't-tr2', title: 'Trend-2 Mother & Daughter', size: 'tall', plays: 528000, videoUrl: `${S3}/trending/trend_2_mother_daughter.mp4` },
+      ],
+    },
+    {
+      key: 'seedance',
+      title: 'Seedance 2.5',
+      gradient: ['#F94F6F', '#A101FF'],
+      items: [
+        { id: 's-1', title: 'FER Phase 1', size: 'square', plays: 28300, videoUrl: `${S3}/seedance-2-5/fer_phase1.mp4` },
+        { id: 's-2', title: 'Realface Auto', size: 'square', plays: 41800, videoUrl: `${S3}/seedance-2-5/realface_auto.mp4` },
+        { id: 's-3', title: 'Yucel 21s', size: 'square', plays: 52400, videoUrl: `${S3}/seedance-2-5/yucel_21s.mp4` },
+      ],
+    },
+    {
+      key: 'avatar',
+      title: 'Avatars',
+      gradient: ['#427BFF', '#1600D5'],
+      items: [
+        { id: 'av-1', title: 'Gobi One — confident presenter', size: 'portrait', plays: 24300, videoUrl: `${CDN}/07GHT7woXGqyDn43Y06cSKN_FYW_96RcbABsxASLdx7Ka2nNpvu-W0zEW2a_96hU/media.mp4` },
+        { id: 'av-2', title: 'Intellect — calm expert', size: 'portrait', plays: 9500000, videoUrl: `${CDN}/hRp4VeK7dq0Abi8M7yNRU-vStCUwgWCXm-3sGQdm4js4UIk-pfqYTTy3eBaxh5Ss/media.mp4` },
+        { id: 'av-3', title: 'Sage — warm mentor', size: 'portrait', plays: 24600, videoUrl: `${CDN}/lQZIV2SeqGKd7Zl2Mwzx8yZACQbLzli5XVFxoXbOEOTLgFdPbd5YuspAtL94lXEn/media.mp4` },
+        { id: 'av-4', title: 'Artist — expressive', size: 'portrait', plays: 106200, videoUrl: `${CDN}/Fe-gkj2FT8vppGTqthuQi-B6ebh3uBRcZK1Rx-pGT5Oj66q2I3x-lZWHYnaWjujY/media.mp4` },
+        { id: 'av-5', title: 'Communicator — friendly host', size: 'portrait', plays: 29500, videoUrl: `${CDN}/SnEiBcYvxYV_R71rAQR4RC9FYp3WV10vWj3j1NvtTvAtWnzpq4Q7Z2ziSx1y5iMO/media.mp4` },
+        { id: 'av-6', title: 'Gobi Two — bold delivery', size: 'portrait', plays: 18200, videoUrl: `${CDN}/QD2S9Gaz4klffvp-4SQAyRnaBbnfpOgz1L0tYCuL2oKAf6e3-vMkipLdnD1R8iof/media.mp4` },
+      ],
+    },
+    {
+      key: 'motions',
+      title: 'Motions',
+      gradient: ['#A780FF', '#5B0180'],
+      items: [
+        { id: 'm-0', title: 'Compare Triplet', size: 'tall', plays: 287000, downloads: 3400, videoUrl: `${S3}/motions/compare_triplet.mp4` },
+        { id: 'm-01', title: 'Faceswap Source', size: 'wide', plays: 94200, videoUrl: `${S3}/motions/faceswap_source.mp4` },
+        { id: 'm-02', title: 'Faceswap Output', size: 'wide', plays: 128700, downloads: 2100, videoUrl: `${S3}/motions/faceswap_output.mp4` },
+      ],
+    },
+    {
+      key: 'gptImage2',
+      title: 'GPT Image 2',
+      gradient: ['#28B851', '#1900FA'],
+      items: [
+        { id: 'g-heirloom', title: 'Heirloom · Ceramics Hero', size: 'wide', plays: 48200, imageUrl: `${S3}/gpt-image-2/heirloom_ceramics.png` },
+        { id: 'g-nordura', title: 'Nordura · %30 İndirim', size: 'square', plays: 72400, imageUrl: `${S3}/gpt-image-2/nordura_turkish_sale.png` },
+        { id: 'g-offhours', title: 'Off Hours · Drop 02', size: 'tall', plays: 61300, imageUrl: `${S3}/gpt-image-2/off_hours_streetwear.png` },
+        { id: 'g-pulse', title: 'Pulse X Pro', size: 'wide', plays: 55800, imageUrl: `${S3}/gpt-image-2/pulse_x_pro_tech.png` },
+        { id: 'g-form', title: 'FORM · Issue 03', size: 'tall', plays: 39700, imageUrl: `${S3}/gpt-image-2/form_magazine.png` },
+        { id: 'g-atlas', title: 'Atlas Koleji · Erken Kayıt', size: 'square', plays: 83400, imageUrl: `${S3}/gpt-image-2/atlas_koleji.png` },
+        { id: 'g-terra', title: 'Terra Residences', size: 'wide', plays: 67100, imageUrl: `${S3}/gpt-image-2/terra_residences.png` },
+        { id: 'g-aura', title: 'Aura Coffee · Ethiopia Reserve', size: 'wide', plays: 51900, imageUrl: `${S3}/gpt-image-2/aura_coffee.png` },
+        { id: 'g-flowbase', title: 'Flowbase 2026', size: 'wide', plays: 46200, imageUrl: `${S3}/gpt-image-2/flowbase_saas.png` },
+        { id: 'g-vera', title: 'Vera Beauty · Glow Serum', size: 'tall', plays: 42800, imageUrl: `${S3}/gpt-image-2/vera_beauty.png` },
+      ],
+    },
+    {
+      key: 'marketingStudio',
+      title: 'Marketing Studio',
+      gradient: ['#FF8D10', '#E91F54'],
+      items: [
+        { id: 'mk-ugc-unboxing', title: 'UGC · Unboxing', size: 'tall', plays: 128400, videoUrl: `${PROD}/ugc_unboxing_example.mp4` },
+        { id: 'mk-ugc-tutorial', title: 'UGC · Tutorial', size: 'tall', plays: 95700, videoUrl: `${PROD}/ugc_tutorial_example.mp4` },
+        { id: 'mk-ugc-review', title: 'UGC · Review', size: 'tall', plays: 82300, videoUrl: `${PROD}/ugc_review_example.mp4` },
+        { id: 'mk-ugc-ba', title: 'UGC · Before / After', size: 'tall', plays: 107200, videoUrl: `${PROD}/ugc_before_after_example.mp4` },
+        { id: 'mk-motion-hero', title: 'Motion · Hypermotion Hero', size: 'tall', plays: 141600, videoUrl: `${PROD}/hypermotion_hero_example.mp4` },
+        { id: 'mk-motion-reveal', title: 'Motion · Bloom Reveal', size: 'tall', plays: 118900, videoUrl: `${PROD}/hypermotion_reveal_example.mp4` },
+        { id: 'mk-motion-splash', title: 'Motion · Liquid Splash', size: 'tall', plays: 164500, videoUrl: `${PROD}/motion_liquid_splash_example.mp4` },
+      ],
+    },
+  ];
 
-    card.addEventListener('mouseenter', () => {
-      ensureSrc();
-      vid.play().catch(() => {});
-    });
-    card.addEventListener('mouseleave', () => {
-      vid.pause();
-      // Reset so the next hover starts fresh, not mid-clip
-      try { vid.currentTime = 0; } catch (e) { /* ignore */ }
-    });
+  const formatCount = (n) => {
+    if (n == null) return '';
+    if (n >= 1e6) return (n / 1e6).toFixed(n < 1e7 ? 1 : 0).replace(/\.0$/, '') + 'M';
+    if (n >= 1e3) return Math.round(n / 1e3) + 'K';
+    return String(n);
+  };
 
-    // Load poster frame once visible so the card isn't a black square at rest
-    if ('IntersectionObserver' in window) {
-      const io = new IntersectionObserver((entries) => {
-        entries.forEach((e) => {
-          if (e.isIntersecting) {
-            ensureSrc();
-            io.disconnect();
-          }
+  const renderExploreRow = (cat) => {
+    const grad = cat.gradient.join(', ');
+    const cards = cat.items.map((item) => {
+      const sizeCls = 'ex-' + (item.size || 'tall');
+      let mediaHtml = '';
+      let dataAttrs = '';
+      if (item.videoUrl) {
+        dataAttrs = ` data-video="${item.videoUrl}"`;
+        mediaHtml = '<video class="ex-media" muted loop playsinline preload="none"></video>';
+      } else if (item.imageUrl) {
+        mediaHtml = `<img class="ex-media" src="${item.imageUrl}" alt="${item.title}" loading="lazy">`;
+      }
+      const plays = item.plays != null ? `<span class="ex-plays">▶ ${formatCount(item.plays)}</span>` : '';
+      const dls = item.downloads != null ? `<span class="ex-dl">⬇ ${formatCount(item.downloads)}</span>` : '';
+      return `
+        <article class="ex-card ${sizeCls}"${dataAttrs}>
+          ${mediaHtml}
+          <span class="ex-title">${item.title}</span>
+          ${plays}${dls}
+        </article>`;
+    }).join('');
+
+    return `
+      <section class="explore-row">
+        <header class="explore-head">
+          <h2 class="explore-title" style="background-image: linear-gradient(90deg, ${grad});">${cat.title}</h2>
+          <div class="explore-arrows">
+            <button class="explore-arrow" data-dir="-1" aria-label="Scroll left">‹</button>
+            <button class="explore-arrow" data-dir="1" aria-label="Scroll right">›</button>
+          </div>
+        </header>
+        <div class="explore-track">${cards}</div>
+      </section>`;
+  };
+
+  const exploreRoot = document.getElementById('explore-root');
+  if (exploreRoot) {
+    exploreRoot.innerHTML = EXPLORE_CATEGORIES.map(renderExploreRow).join('');
+
+    // Wire arrow buttons
+    exploreRoot.querySelectorAll('.explore-row').forEach((row) => {
+      const track = row.querySelector('.explore-track');
+      row.querySelectorAll('.explore-arrow').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          const dir = Number(btn.dataset.dir) || 1;
+          track.scrollBy({ left: dir * 420, behavior: 'smooth' });
         });
-      }, { rootMargin: '200px' });
-      io.observe(card);
-    } else {
-      ensureSrc();
-    }
-  });
+      });
+    });
+
+    // Hover-to-play + lazy poster for each card with a video
+    exploreRoot.querySelectorAll('.ex-card[data-video]').forEach((card) => {
+      const vid = card.querySelector('video');
+      const src = card.dataset.video;
+      const ensureSrc = () => { if (!vid.src) vid.src = src; };
+
+      card.addEventListener('mouseenter', () => { ensureSrc(); vid.play().catch(() => {}); });
+      card.addEventListener('mouseleave', () => { vid.pause(); try { vid.currentTime = 0; } catch (e) {} });
+
+      if ('IntersectionObserver' in window) {
+        const io = new IntersectionObserver((entries) => {
+          entries.forEach((e) => {
+            if (e.isIntersecting) { ensureSrc(); io.disconnect(); }
+          });
+        }, { rootMargin: '400px' });
+        io.observe(card);
+      } else {
+        ensureSrc();
+      }
+    });
+  }
 })();
