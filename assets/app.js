@@ -288,9 +288,24 @@
       </section>`;
   };
 
+  // Display order is decoupled from the data array so reordering rows is a
+  // one-line change instead of a diff across six sections.
+  const EXPLORE_ORDER = [
+    'trending',
+    'gptImage2',
+    'marketingStudio',
+    'seedance',
+    'motions',
+    'avatar',
+  ];
+
   const exploreRoot = document.getElementById('explore-root');
   if (exploreRoot) {
-    exploreRoot.innerHTML = EXPLORE_CATEGORIES.map(renderExploreRow).join('');
+    const byKey = Object.fromEntries(EXPLORE_CATEGORIES.map((c) => [c.key, c]));
+    exploreRoot.innerHTML = EXPLORE_ORDER.map((k) => byKey[k])
+      .filter(Boolean)
+      .map(renderExploreRow)
+      .join('');
 
     // Wire arrow buttons
     exploreRoot.querySelectorAll('.explore-row').forEach((row) => {
