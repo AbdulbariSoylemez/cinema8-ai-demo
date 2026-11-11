@@ -159,26 +159,20 @@
       ],
     },
     {
-      key: 'seedance',
-      title: 'Seedance 2.5',
-      gradient: ['#F94F6F', '#A101FF'],
+      key: 'gptImage2',
+      title: 'GPT Image 2',
+      gradient: ['#28B851', '#1900FA'],
       items: [
-        { id: 's-1', title: 'FER Phase 1', size: 'square', plays: 28300, videoUrl: `${S3}/seedance-2-5/fer_phase1.mp4` },
-        { id: 's-2', title: 'Realface Auto', size: 'square', plays: 41800, videoUrl: `${S3}/seedance-2-5/realface_auto.mp4` },
-        { id: 's-3', title: 'Yucel 21s', size: 'square', plays: 52400, videoUrl: `${S3}/seedance-2-5/yucel_21s.mp4` },
-      ],
-    },
-    {
-      key: 'avatar',
-      title: 'Avatars',
-      gradient: ['#427BFF', '#1600D5'],
-      items: [
-        { id: 'av-1', title: 'Gobi One — confident presenter', size: 'portrait', plays: 24300, videoUrl: `${CDN}/07GHT7woXGqyDn43Y06cSKN_FYW_96RcbABsxASLdx7Ka2nNpvu-W0zEW2a_96hU/media.mp4` },
-        { id: 'av-2', title: 'Intellect — calm expert', size: 'portrait', plays: 9500000, videoUrl: `${CDN}/hRp4VeK7dq0Abi8M7yNRU-vStCUwgWCXm-3sGQdm4js4UIk-pfqYTTy3eBaxh5Ss/media.mp4` },
-        { id: 'av-3', title: 'Sage — warm mentor', size: 'portrait', plays: 24600, videoUrl: `${CDN}/lQZIV2SeqGKd7Zl2Mwzx8yZACQbLzli5XVFxoXbOEOTLgFdPbd5YuspAtL94lXEn/media.mp4` },
-        { id: 'av-4', title: 'Artist — expressive', size: 'portrait', plays: 106200, videoUrl: `${CDN}/Fe-gkj2FT8vppGTqthuQi-B6ebh3uBRcZK1Rx-pGT5Oj66q2I3x-lZWHYnaWjujY/media.mp4` },
-        { id: 'av-5', title: 'Communicator — friendly host', size: 'portrait', plays: 29500, videoUrl: `${CDN}/SnEiBcYvxYV_R71rAQR4RC9FYp3WV10vWj3j1NvtTvAtWnzpq4Q7Z2ziSx1y5iMO/media.mp4` },
-        { id: 'av-6', title: 'Gobi Two — bold delivery', size: 'portrait', plays: 18200, videoUrl: `${CDN}/QD2S9Gaz4klffvp-4SQAyRnaBbnfpOgz1L0tYCuL2oKAf6e3-vMkipLdnD1R8iof/media.mp4` },
+        { id: 'g-heirloom', title: 'Heirloom · Ceramics Hero', size: 'wide', plays: 48200, imageUrl: `${S3}/gpt-image-2/heirloom_ceramics.png` },
+        { id: 'g-nordura', title: 'Nordura · %30 İndirim', size: 'square', plays: 72400, imageUrl: `${S3}/gpt-image-2/nordura_turkish_sale.png` },
+        { id: 'g-offhours', title: 'Off Hours · Drop 02', size: 'tall', plays: 61300, imageUrl: `${S3}/gpt-image-2/off_hours_streetwear.png` },
+        { id: 'g-pulse', title: 'Pulse X Pro', size: 'wide', plays: 55800, imageUrl: `${S3}/gpt-image-2/pulse_x_pro_tech.png` },
+        { id: 'g-form', title: 'FORM · Issue 03', size: 'tall', plays: 39700, imageUrl: `${S3}/gpt-image-2/form_magazine.png` },
+        { id: 'g-atlas', title: 'Atlas Koleji · Erken Kayıt', size: 'square', plays: 83400, imageUrl: `${S3}/gpt-image-2/atlas_koleji.png` },
+        { id: 'g-terra', title: 'Terra Residences', size: 'wide', plays: 67100, imageUrl: `${S3}/gpt-image-2/terra_residences.png` },
+        { id: 'g-aura', title: 'Aura Coffee · Ethiopia Reserve', size: 'wide', plays: 51900, imageUrl: `${S3}/gpt-image-2/aura_coffee.png` },
+        { id: 'g-flowbase', title: 'Flowbase 2026', size: 'wide', plays: 46200, imageUrl: `${S3}/gpt-image-2/flowbase_saas.png` },
+        { id: 'g-vera', title: 'Vera Beauty · Glow Serum', size: 'tall', plays: 42800, imageUrl: `${S3}/gpt-image-2/vera_beauty.png` },
       ],
     },
     {
@@ -209,20 +203,13 @@
       ],
     },
     {
-      key: 'gptImage2',
-      title: 'GPT Image 2',
-      gradient: ['#28B851', '#1900FA'],
+      key: 'seedance',
+      title: 'Seedance 2.5',
+      gradient: ['#F94F6F', '#A101FF'],
       items: [
-        { id: 'g-heirloom', title: 'Heirloom · Ceramics Hero', size: 'wide', plays: 48200, imageUrl: `${S3}/gpt-image-2/heirloom_ceramics.png` },
-        { id: 'g-nordura', title: 'Nordura · %30 İndirim', size: 'square', plays: 72400, imageUrl: `${S3}/gpt-image-2/nordura_turkish_sale.png` },
-        { id: 'g-offhours', title: 'Off Hours · Drop 02', size: 'tall', plays: 61300, imageUrl: `${S3}/gpt-image-2/off_hours_streetwear.png` },
-        { id: 'g-pulse', title: 'Pulse X Pro', size: 'wide', plays: 55800, imageUrl: `${S3}/gpt-image-2/pulse_x_pro_tech.png` },
-        { id: 'g-form', title: 'FORM · Issue 03', size: 'tall', plays: 39700, imageUrl: `${S3}/gpt-image-2/form_magazine.png` },
-        { id: 'g-atlas', title: 'Atlas Koleji · Erken Kayıt', size: 'square', plays: 83400, imageUrl: `${S3}/gpt-image-2/atlas_koleji.png` },
-        { id: 'g-terra', title: 'Terra Residences', size: 'wide', plays: 67100, imageUrl: `${S3}/gpt-image-2/terra_residences.png` },
-        { id: 'g-aura', title: 'Aura Coffee · Ethiopia Reserve', size: 'wide', plays: 51900, imageUrl: `${S3}/gpt-image-2/aura_coffee.png` },
-        { id: 'g-flowbase', title: 'Flowbase 2026', size: 'wide', plays: 46200, imageUrl: `${S3}/gpt-image-2/flowbase_saas.png` },
-        { id: 'g-vera', title: 'Vera Beauty · Glow Serum', size: 'tall', plays: 42800, imageUrl: `${S3}/gpt-image-2/vera_beauty.png` },
+        { id: 's-1', title: 'FER Phase 1', size: 'square', plays: 28300, videoUrl: `${S3}/seedance-2-5/fer_phase1.mp4` },
+        { id: 's-2', title: 'Realface Auto', size: 'square', plays: 41800, videoUrl: `${S3}/seedance-2-5/realface_auto.mp4` },
+        { id: 's-3', title: 'Yucel 21s', size: 'square', plays: 52400, videoUrl: `${S3}/seedance-2-5/yucel_21s.mp4` },
       ],
     },
     {
@@ -239,6 +226,20 @@
         { id: 'mk-motion-splash', title: 'Motion · Liquid Splash', size: 'tall', plays: 164500, videoUrl: `${PROD}/motion_liquid_splash_example.mp4` },
       ],
     },
+    {
+      key: 'avatar',
+      title: 'Avatars',
+      gradient: ['#427BFF', '#1600D5'],
+      items: [
+        { id: 'av-1', title: 'Gobi One — confident presenter', size: 'portrait', plays: 24300, videoUrl: `${CDN}/07GHT7woXGqyDn43Y06cSKN_FYW_96RcbABsxASLdx7Ka2nNpvu-W0zEW2a_96hU/media.mp4` },
+        { id: 'av-2', title: 'Intellect — calm expert', size: 'portrait', plays: 9500000, videoUrl: `${CDN}/hRp4VeK7dq0Abi8M7yNRU-vStCUwgWCXm-3sGQdm4js4UIk-pfqYTTy3eBaxh5Ss/media.mp4` },
+        { id: 'av-3', title: 'Sage — warm mentor', size: 'portrait', plays: 24600, videoUrl: `${CDN}/lQZIV2SeqGKd7Zl2Mwzx8yZACQbLzli5XVFxoXbOEOTLgFdPbd5YuspAtL94lXEn/media.mp4` },
+        { id: 'av-4', title: 'Artist — expressive', size: 'portrait', plays: 106200, videoUrl: `${CDN}/Fe-gkj2FT8vppGTqthuQi-B6ebh3uBRcZK1Rx-pGT5Oj66q2I3x-lZWHYnaWjujY/media.mp4` },
+        { id: 'av-5', title: 'Communicator — friendly host', size: 'portrait', plays: 29500, videoUrl: `${CDN}/SnEiBcYvxYV_R71rAQR4RC9FYp3WV10vWj3j1NvtTvAtWnzpq4Q7Z2ziSx1y5iMO/media.mp4` },
+        { id: 'av-6', title: 'Gobi Two — bold delivery', size: 'portrait', plays: 18200, videoUrl: `${CDN}/QD2S9Gaz4klffvp-4SQAyRnaBbnfpOgz1L0tYCuL2oKAf6e3-vMkipLdnD1R8iof/media.mp4` },
+      ],
+    },
+  
   ];
 
   const formatCount = (n) => {
