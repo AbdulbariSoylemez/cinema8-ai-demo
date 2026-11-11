@@ -117,4 +117,42 @@
       }
     });
   });
+
+  // ---- Showcase hover-to-play videos ----
+  // Lazy src assignment — nothing streams until the user hovers the card,
+  // so the page load stays fast even with 6+ videos on screen.
+  document.querySelectorAll('.showcase-card[data-video]').forEach((card) => {
+    const vid = card.querySelector('video');
+    if (!vid) return;
+    const src = card.dataset.video;
+
+    const ensureSrc = () => {
+      if (!vid.src) vid.src = src;
+    };
+
+    card.addEventListener('mouseenter', () => {
+      ensureSrc();
+      vid.play().catch(() => {});
+    });
+    card.addEventListener('mouseleave', () => {
+      vid.pause();
+      // Reset so the next hover starts fresh, not mid-clip
+      try { vid.currentTime = 0; } catch (e) { /* ignore */ }
+    });
+
+    // Load poster frame once visible so the card isn't a black square at rest
+    if ('IntersectionObserver' in window) {
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) {
+            ensureSrc();
+            io.disconnect();
+          }
+        });
+      }, { rootMargin: '200px' });
+      io.observe(card);
+    } else {
+      ensureSrc();
+    }
+  });
 })();

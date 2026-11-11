@@ -385,45 +385,70 @@
           </div>
         </section>
 
-        <!-- ======= Showcase ======= -->
+        <!-- ======= Real outputs from Cinema8 playground ======= -->
         <section class="section">
           <div class="section-head">
             <div>
-              <div class="section-title">Community showcase</div>
-              <p class="section-sub">A glimpse at what creators have been generating this week.</p>
+              <div class="section-title">See what our AI tools produce</div>
+              <p class="section-sub">Real outputs from the Cinema8 playground — hover to preview, pick a tool above to make your own.</p>
             </div>
-            <a class="section-link" href="#">Browse all →</a>
+            <a class="section-link" href="https://studio.cinema8.site/playground" target="_blank" rel="noopener">Open playground →</a>
           </div>
           <div class="showcase">
-            <div class="showcase-card">
-              <div class="art" style="background: linear-gradient(135deg, #1900FA, #A101FF, #E52357);"></div>
-              <span class="tag">T2V</span>
-              <div class="overlay"><div class="caption">Neon rooftop drone — Istanbul</div></div>
+            <!-- Seedance text-to-video -->
+            <div class="showcase-card" data-video="https://s3.eu-central-1.wasabisys.com/gobito-genai/test/explore/seedance-2-5/yucel_21s.mp4">
+              <video class="art" muted loop playsinline preload="metadata"></video>
+              <span class="tag">Seedance · T2V</span>
+              <div class="overlay"><div class="caption">21s cinematic sequence from a single prompt</div></div>
             </div>
-            <div class="showcase-card">
-              <div class="art" style="background: linear-gradient(135deg, #16121f, #6a00e0, #A101FF);"></div>
-              <span class="tag">AVATAR</span>
-              <div class="overlay"><div class="caption">CEO welcome message, Turkish voice</div></div>
+
+            <!-- Motion transfer -->
+            <div class="showcase-card" data-video="https://s3.eu-central-1.wasabisys.com/gobito-genai/test/explore/motions/compare_triplet.mp4">
+              <video class="art" muted loop playsinline preload="metadata"></video>
+              <span class="tag">Motion Transfer</span>
+              <div class="overlay"><div class="caption">Source → character → result in one triplet</div></div>
             </div>
-            <div class="showcase-card">
-              <div class="art" style="background: linear-gradient(135deg, #FAB758, #FF8D0F, #E52357);"></div>
-              <span class="tag">MOTION</span>
-              <div class="overlay"><div class="caption">Dance remake with brand mascot</div></div>
+
+            <!-- Avatar -->
+            <div class="showcase-card" data-video="https://cdn1.cinema8.site/mp4s/100/07GHT7woXGqyDn43Y06cSKN_FYW_96RcbABsxASLdx7Ka2nNpvu-W0zEW2a_96hU/media.mp4">
+              <video class="art" muted loop playsinline preload="metadata"></video>
+              <span class="tag">Avatar</span>
+              <div class="overlay"><div class="caption">Gobi One — confident presenter avatar</div></div>
             </div>
-            <div class="showcase-card">
-              <div class="art" style="background: linear-gradient(135deg, #A101FF, #6a00e0, #1900FA);"></div>
-              <span class="tag">I2V</span>
-              <div class="overlay"><div class="caption">Product photo → 5s rotating hero</div></div>
+
+            <!-- Faceswap (motion variant) -->
+            <div class="showcase-card" data-video="https://s3.eu-central-1.wasabisys.com/gobito-genai/test/explore/motions/faceswap_output.mp4">
+              <video class="art" muted loop playsinline preload="metadata"></video>
+              <span class="tag">Motion · Faceswap</span>
+              <div class="overlay"><div class="caption">Keep the choreography, swap the character</div></div>
             </div>
-            <div class="showcase-card">
-              <div class="art" style="background: linear-gradient(135deg, #E52357, #A101FF, #FAB758);"></div>
-              <span class="tag">T2I</span>
-              <div class="overlay"><div class="caption">Sci-fi course cover art</div></div>
+
+            <!-- UGC product studio -->
+            <div class="showcase-card" data-video="https://s3.eu-central-1.wasabisys.com/gobito-genai/product-studio/styles/ugc_unboxing_example.mp4">
+              <video class="art" muted loop playsinline preload="metadata"></video>
+              <span class="tag">Product · UGC</span>
+              <div class="overlay"><div class="caption">Unboxing-style ad, one photo in</div></div>
             </div>
+
+            <!-- Trending -->
+            <div class="showcase-card" data-video="https://s3.eu-central-1.wasabisys.com/gobito-genai/test/explore/trending/trend_1_rap.mp4">
+              <video class="art" muted loop playsinline preload="metadata"></video>
+              <span class="tag">Trending</span>
+              <div class="overlay"><div class="caption">Rap-track clip generated this week</div></div>
+            </div>
+
+            <!-- GPT Image 2 — Heirloom Ceramics -->
             <div class="showcase-card">
-              <div class="art" style="background: linear-gradient(135deg, #16121f, #A101FF, #FF8D0F);"></div>
-              <span class="tag">STUDIO</span>
-              <div class="overlay"><div class="caption">4-scene product explainer, 20s</div></div>
+              <img class="art" src="https://s3.eu-central-1.wasabisys.com/gobito-genai/test/explore/gpt-image-2/heirloom_ceramics.png" alt="Heirloom ceramics hero" loading="lazy" />
+              <span class="tag">Text to Image</span>
+              <div class="overlay"><div class="caption">Heirloom · ceramics brand hero</div></div>
+            </div>
+
+            <!-- GPT Image 2 — Aura Coffee -->
+            <div class="showcase-card">
+              <img class="art" src="https://s3.eu-central-1.wasabisys.com/gobito-genai/test/explore/gpt-image-2/aura_coffee.png" alt="Aura Coffee product art" loading="lazy" />
+              <span class="tag">Text to Image</span>
+              <div class="overlay"><div class="caption">Aura Coffee · Ethiopia Reserve pack</div></div>
             </div>
           </div>
         </section>

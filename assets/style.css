@@ -582,7 +582,15 @@ button { font-family: inherit; }
 
 .showcase-card .art {
   position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  display: block;
+  background: var(--bg-elev);
 }
+.showcase-card video.art {
+  transition: transform 0.4s ease;
+}
+.showcase-card:hover video.art { transform: scale(1.03); }
 .showcase-card .overlay {
   position: absolute; inset: 0;
   background: linear-gradient(to top, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0) 45%);
