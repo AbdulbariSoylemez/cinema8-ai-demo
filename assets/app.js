@@ -288,9 +288,9 @@
   const EXPLORE_ORDER = [
     'trending',
     'gptImage2',
-    'marketingStudio',
-    'seedance',
     'motions',
+    'seedance',
+    'marketingStudio',
     'avatar',
   ];
 
