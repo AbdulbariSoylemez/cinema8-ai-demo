@@ -130,12 +130,32 @@
 
   const EXPLORE_CATEGORIES = [
     {
+      // Ported from cinema8-admin-v2/.../motion-transfer/motionRecipes.js —
+      // the ready recipes the Motion Transfer tool ships with. Each row's
+      // preview mp4 is public and plays in place on hover.
       key: 'trending',
       title: 'Trending',
       gradient: ['#E91F54', '#FF8D10', '#A101FF'],
       items: [
-        { id: 't-0', title: 'Trend-1 Rap', size: 'wide', plays: 412000, videoUrl: `${S3}/trending/trend_1_rap.mp4` },
-        { id: 't-tr2', title: 'Trend-2 Mother & Daughter', size: 'tall', plays: 528000, videoUrl: `${S3}/trending/trend_2_mother_daughter.mp4` },
+        { id: 'golden-hour', title: 'Golden Hour', size: 'portrait', plays: 412000, videoUrl: `${S3}/reskin/recreate/1cf784d1bb0d45dd959672569422fe5c.mp4` },
+        { id: 'parking-lot', title: 'Parking Lot', size: 'wide', plays: 384500, videoUrl: `${S3}/reskin/recreate/c3bbb65ad2b64ab28183edccbed8018a.mp4` },
+        { id: 'hooded-crowd', title: 'Hooded Crowd', size: 'portrait', plays: 528000, videoUrl: `${S3}/reskin/recreate/8a53b2ea8ce5486fb97614a99438ec7e.mp4` },
+        { id: 'studio-duet', title: 'Studio Duet', size: 'square', plays: 296000, videoUrl: `${S3}/reskin/recreate/f0e8dbb91d204fcc8d9a9157d4ff2121.mp4` },
+        { id: 'neon-hologram', title: 'Neon Hologram', size: 'wide', plays: 471300, videoUrl: `${S3}/reskin/recreate/567f311bb025421f81dc8415685050c2.mp4` },
+        { id: 'cliffside-reader', title: 'Cliffside Reader', size: 'square', plays: 215400, videoUrl: `${S3}/reskin/recreate/f72bab723b6843c89965045a3aadbaf2.mp4` },
+        { id: 'knight-pitch', title: 'Knight Pitch', size: 'portrait', plays: 338200, videoUrl: `${S3}/reskin/recreate/dc131eb356744219ac1a8a0bccaa62b8.mp4` },
+        { id: 'living-room', title: 'Living Room', size: 'portrait', plays: 142800, videoUrl: `${S3}/reskin/recreate/96e1c252a740483b83e2c15f6472354d.mp4` },
+        { id: 'living-room-pitbull', title: 'Living Room · Pitbull', size: 'portrait', plays: 198700, videoUrl: `${S3}/reskin/recreate/living-room-pitbull.mp4` },
+        { id: 'red-convertible-pitbull', title: 'Red Convertible · Pitbull', size: 'portrait', plays: 452100, videoUrl: `${S3}/reskin/recreate/3bc4f626c9414dae9d55b86b3a69d88a.mp4` },
+        { id: 'giants-fence-cat-dog', title: 'Giants Fence · Cat & Dog', size: 'portrait', plays: 614500, videoUrl: `${S3}/reskin/recreate/giants-fence-cat-dog.mp4` },
+        { id: 'nightclub-knights', title: 'Nightclub Knights', size: 'portrait', plays: 287600, videoUrl: `${S3}/reskin/recreate/nightclub-knights.mp4` },
+        { id: 'fridge-warrior', title: 'Fridge Warrior', size: 'portrait', plays: 362900, videoUrl: `${S3}/reskin/recreate/fridge-warrior.mp4` },
+        { id: 'locker-warrior', title: 'Locker Warrior', size: 'wide', plays: 243700, videoUrl: `${S3}/reskin/recreate/locker-warrior.mp4` },
+        { id: 'club-pitbull', title: 'Club · Pitbull', size: 'portrait', plays: 405800, videoUrl: `${S3}/reskin/recreate/club-pitbull.mp4` },
+        { id: 'window-lambo', title: 'Window Lambo', size: 'wide', plays: 176400, videoUrl: `${S3}/reskin/recreate/window-lambo.mp4` },
+        { id: 'elevator-knights', title: 'Elevator Knights', size: 'wide', plays: 311200, videoUrl: `${S3}/reskin/recreate/elevator-knights.mp4` },
+        { id: 'wedding-sweater', title: 'Wedding Sweater', size: 'portrait', plays: 129600, videoUrl: `${S3}/reskin/recreate/wedding-sweater.mp4` },
+        { id: 'chatgbt-retriever', title: 'ChatGPT Retriever', size: 'portrait', plays: 498300, videoUrl: `${S3}/reskin/recreate/chatgbt-retriever.mp4` },
       ],
     },
     {
