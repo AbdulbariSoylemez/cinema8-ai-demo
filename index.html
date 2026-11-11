@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cinema8 AI · Create with AI</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/style.css" />
+</head>
+<body>
+  <div class="app">
+    <!-- ======= Sidebar ======= -->
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="brand-mark">C8</div>
+        <span>Cinema8 AI</span>
+      </div>
+
+      <div class="nav-section">
+        <div class="nav-label">Create</div>
+        <a href="index.html" class="nav-item active">
+          <span class="icon">🏠</span> Home
+        </a>
+        <a href="pages/video-studio.html" class="nav-item">
+          <span class="icon">🎬</span> AI Video Studio
+          <span class="pill">NEW</span>
+        </a>
+        <a href="pages/text-to-video.html" class="nav-item">
+          <span class="icon">🎥</span> Text to Video
+        </a>
+        <a href="pages/image-to-video.html" class="nav-item">
+          <span class="icon">🖼️</span> Image to Video
+        </a>
+        <a href="pages/motion-transfer.html" class="nav-item">
+          <span class="icon">🕺</span> Motion Transfer
+          <span class="pill">BETA</span>
+        </a>
+        <a href="pages/avatar.html" class="nav-item">
+          <span class="icon">👤</span> AI Avatar
+        </a>
+      </div>
+
+      <div class="nav-section">
+        <div class="nav-label">Enhance</div>
+        <div class="nav-item"><span class="icon">🔊</span> AI Dubbing</div>
+        <div class="nav-item"><span class="icon">🎙️</span> Text to Speech</div>
+        <div class="nav-item"><span class="icon">🎤</span> Voice Clone</div>
+        <div class="nav-item"><span class="icon">🎧</span> Speech Cleanup</div>
+        <div class="nav-item"><span class="icon">🎼</span> Vocal Remover</div>
+      </div>
+
+      <div class="nav-section">
+        <div class="nav-label">Image</div>
+        <div class="nav-item"><span class="icon">✨</span> Text to Image</div>
+        <div class="nav-item"><span class="icon">🔍</span> Image Upscale</div>
+        <div class="nav-item"><span class="icon">🖌️</span> Background</div>
+        <div class="nav-item"><span class="icon">🙈</span> Face Blur</div>
+      </div>
+
+      <div class="nav-section">
+        <div class="nav-label">Library</div>
+        <div class="nav-item"><span class="icon">📁</span> My generations</div>
+        <div class="nav-item"><span class="icon">⭐</span> Favorites</div>
+      </div>
+    </aside>
+
+    <!-- ======= Main ======= -->
+    <div class="main">
+      <header class="topbar">
+        <div class="breadcrumb">
+          <span>AI Tools</span>
+        </div>
+        <div class="top-actions">
+          <div class="credits">
+            <span>🪙</span> <strong>248,500</strong> tokens
+          </div>
+          <div class="avatar-chip">AB</div>
+        </div>
+      </header>
+
+      <main class="content">
+        <!-- ======= Hero composer ======= -->
+        <section class="hero">
+          <h1>Create with AI, straight into your library</h1>
+          <p>One prompt, one image, one voice — Cinema8 generates production-ready video, audio and imagery you can drop into any interactive scene.</p>
+
+          <div class="composer">
+            <div class="mode-pills" id="modePills">
+              <button class="pill active" data-mode="text-to-video">🎥 Text → Video</button>
+              <button class="pill" data-mode="image-to-video">🖼️ Image → Video</button>
+              <button class="pill" data-mode="motion-transfer">🕺 Motion Transfer</button>
+              <button class="pill" data-mode="avatar">👤 Avatar</button>
+              <button class="pill" data-mode="text-to-image">✨ Text → Image</button>
+              <button class="pill" data-mode="text-to-speech">🔊 Text → Speech</button>
+            </div>
+
+            <div class="prompt-row">
+              <textarea
+                class="prompt-input"
+                id="heroPrompt"
+                placeholder="A cinematic drone shot flying over a neon-lit Istanbul rooftop at dusk, camera slowly pushing forward…"
+              ></textarea>
+              <button class="btn btn-primary" id="heroGenerate">
+                ✨ Generate
+              </button>
+            </div>
+
+            <div class="composer-foot">
+              <div class="opts">
+                <span><strong>Model:</strong> Seedance 1 Pro</span>
+                <span><strong>Aspect:</strong> 16:9</span>
+                <span><strong>Length:</strong> 5s</span>
+              </div>
+              <span>≈ 1,400 tokens</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- ======= Category chips ======= -->
+        <div class="chips" id="catChips">
+          <button class="chip active" data-cat="all">All <span class="count">18</span></button>
+          <button class="chip" data-cat="Video">Video <span class="count">9</span></button>
+          <button class="chip" data-cat="Audio">Audio <span class="count">5</span></button>
+          <button class="chip" data-cat="Image">Image <span class="count">4</span></button>
+        </div>
+
+        <!-- ======= Video shelf ======= -->
+        <section class="section" data-shelf="Video">
+          <div class="section-head">
+            <div>
+              <div class="section-title">Video</div>
+              <p class="section-sub">Create clips from prompts, stills or a talking avatar — then upscale, reframe or blur.</p>
+            </div>
+            <a class="section-link" href="#">See all →</a>
+          </div>
+          <div class="grid">
+            <!-- Featured: Video Studio -->
+            <a href="pages/video-studio.html" class="tool-card featured">
+              <div class="tool-art">
+                <div class="gradient gr-video"></div>
+                <div class="pattern"></div>
+                <div class="glow"></div>
+                <div class="badges">
+                  <span class="badge">VIDEO</span>
+                  <span class="badge new">✦ NEW</span>
+                </div>
+                <div class="tool-icon">🎬</div>
+              </div>
+              <div class="tool-meta">
+                <div>
+                  <div class="tool-title">AI Video Studio</div>
+                  <p class="tool-desc">Build longer videos scene by scene — start from a prompt or image, then extend the story.</p>
+                </div>
+                <span class="cta">Open studio →</span>
+              </div>
+            </a>
+
+            <a href="pages/text-to-video.html" class="tool-card">
+              <div class="tool-art">
+                <div class="gradient gr-video"></div><div class="pattern"></div><div class="glow"></div>
+                <div class="badges"><span class="badge">VIDEO</span></div>
+                <div class="tool-icon">🎥</div>
+              </div>
+              <div class="tool-meta">
+                <div class="tool-title">Text to Video</div>
+                <p class="tool-desc">Generate short videos from a text prompt.</p>
+              </div>
+            </a>
+
+            <a href="pages/image-to-video.html" class="tool-card">
+              <div class="tool-art">
+                <div class="gradient gr-video"></div><div class="pattern"></div><div class="glow"></div>
+                <div class="badges"><span class="badge">VIDEO</span></div>
+                <div class="tool-icon">🖼️</div>
+              </div>
+              <div class="tool-meta">
+                <div class="tool-title">Image to Video</div>
+                <p class="tool-desc">Animate a still image into a short video clip.</p>
+              </div>
+            </a>
+
+            <a href="pages/motion-transfer.html" class="tool-card">
+              <div class="tool-art">
+                <div class="gradient gr-video"></div><div class="pattern"></div><div class="glow"></div>
+                <div class="badges"><span class="badge">VIDEO</span><span class="badge beta">BETA</span></div>
+                <div class="tool-icon">🕺</div>
+              </div>
+              <div class="tool-meta">
+                <div class="tool-title">Motion Transfer</div>
+                <p class="tool-desc">Recreate any video with your own characters. Same moves, same camera.</p>
+              </div>
+            </a>
+
+            <a href="pages/avatar.html" class="tool-card">
+              <div class="tool-art">
+                <div class="gradient gr-video"></div><div class="pattern"></div><div class="glow"></div>
+                <div class="badges"><span class="badge">VIDEO</span></div>
+                <div class="tool-icon">👤</div>
+              </div>
+              <div class="tool-meta">
+                <div class="tool-title">AI Avatar</div>
+                <p class="tool-desc">Turn a portrait photo and a voice track into a talking avatar video.</p>
+              </div>
+            </a>
+
+            <div class="tool-card">
+              <div class="tool-art">
+                <div class="gradient gr-video"></div><div class="pattern"></div><div class="glow"></div>
+                <div class="badges"><span class="badge">VIDEO</span><span class="badge beta">BETA</span></div>
+                <div class="tool-icon">🔊</div>
+              </div>
+              <div class="tool-meta">
+                <div class="tool-title">AI Dubbing</div>
+                <p class="tool-desc">Translate and re-voice a video — clone the speakers' own voices, or add audio descriptions.</p>
+              </div>
+            </div>
+
+            <div class="tool-card">
+              <div class="tool-art">
+                <div class="gradient gr-video"></div><div class="pattern"></div><div class="glow"></div>
+                <div class="badges"><span class="badge">VIDEO</span></div>
+                <div class="tool-icon">🙈</div>
+              </div>
+              <div class="tool-meta">
+                <div class="tool-title">Face Blur (Video)</div>
+                <p class="tool-desc">Blur faces in a video for privacy.</p>
+              </div>
+            </div>
+
+            <div class="tool-card">
+              <div class="tool-art">
+                <div class="gradient gr-video"></div><div class="pattern"></div><div class="glow"></div>
+                <div class="badges"><span class="badge">VIDEO</span></div>
+                <div class="tool-icon">🔍</div>
+              </div>
+              <div class="tool-meta">
+                <div class="tool-title">Video Upscale</div>
+                <p class="tool-desc">Boost a low-res video to higher resolution with AI.</p>
+              </div>
+            </div>
+
+            <div class="tool-card">
+              <div class="tool-art">
+                <div class="gradient gr-video"></div><div class="pattern"></div><div class="glow"></div>
+                <div class="badges"><span class="badge">VIDEO</span></div>
+                <div class="tool-icon">📐</div>
+              </div>
+              <div class="tool-meta">
+                <div class="tool-title">Smart Reframe</div>
+                <p class="tool-desc">Convert a video to another aspect ratio — the subject stays in frame.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ======= Audio shelf ======= -->
+        <section class="section" data-shelf="Audio">
+          <div class="section-head">
+            <div>
+              <div class="section-title">Audio</div>
+              <p class="section-sub">Natural speech, cloned voices, podcast episodes, noise cleanup and vocal removal.</p>
+            </div>
+          </div>
+          <div class="grid">
+            <div class="tool-card">
+              <div class="tool-art">
+                <div class="gradient gr-audio"></div><div class="pattern"></div><div class="glow"></div>
+                <div class="badges"><span class="badge">AUDIO</span></div>
+                <div class="tool-icon">🎙️</div>
+              </div>
+              <div class="tool-meta">
+                <div class="tool-title">Text to Speech</div>
+                <p class="tool-desc">Turn text into natural-sounding speech in three provider voices.</p>
+              </div>
+            </div>
+
+            <div class="tool-card">
+              <div class="tool-art">
+                <div class="gradient gr-audio"></div><div class="pattern"></div><div class="glow"></div>
+                <div class="badges"><span class="badge">AUDIO</span></div>
+                <div class="tool-icon">🎤</div>
+              </div>
+              <div class="tool-meta">
+                <div class="tool-title">Voice Clone</div>
+                <p class="tool-desc">Clone a voice from a short sample and make it say your text.</p>
+              </div>
+            </div>
+
+            <div class="tool-card">
+              <div class="tool-art">
+                <div class="gradient gr-audio"></div><div class="pattern"></div><div class="glow"></div>
+                <div class="badges"><span class="badge">AUDIO</span></div>
+                <div class="tool-icon">🎙️</div>
+              </div>
+              <div class="tool-meta">
+                <div class="tool-title">AI Podcast</div>
+                <p class="tool-desc">Plan a multi-speaker episode script, then render it to audio.</p>
+              </div>
+            </div>
+
+            <div class="tool-card">
+              <div class="tool-art">
+                <div class="gradient gr-audio"></div><div class="pattern"></div><div class="glow"></div>
+                <div class="badges"><span class="badge">AUDIO</span></div>
+                <div class="tool-icon">🎧</div>
+              </div>
+              <div class="tool-meta">
+                <div class="tool-title">Speech Cleanup</div>
+                <p class="tool-desc">Remove background noise from a voice recording or video.</p>
+              </div>
+            </div>
+
+            <div class="tool-card">
+              <div class="tool-art">
+                <div class="gradient gr-audio"></div><div class="pattern"></div><div class="glow"></div>
+                <div class="badges"><span class="badge">AUDIO</span></div>
+                <div class="tool-icon">🎼</div>
+              </div>
+              <div class="tool-meta">
+                <div class="tool-title">Vocal Remover</div>
+                <p class="tool-desc">Strip voices from audio or video — keep the music and ambience.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ======= Image shelf ======= -->
+        <section class="section" data-shelf="Image">
+          <div class="section-head">
+            <div>
+              <div class="section-title">Image</div>
+              <p class="section-sub">Generate images from text, swap backgrounds, blur faces.</p>
+            </div>
+          </div>
+          <div class="grid">
+            <div class="tool-card">
+              <div class="tool-art">
+                <div class="gradient gr-image"></div><div class="pattern"></div><div class="glow"></div>
+                <div class="badges"><span class="badge">IMAGE</span></div>
+                <div class="tool-icon">✨</div>
+              </div>
+              <div class="tool-meta">
+                <div class="tool-title">Text to Image</div>
+                <p class="tool-desc">Generate images from a text prompt.</p>
+              </div>
+            </div>
+
+            <div class="tool-card">
+              <div class="tool-art">
+                <div class="gradient gr-image"></div><div class="pattern"></div><div class="glow"></div>
+                <div class="badges"><span class="badge">IMAGE</span></div>
+                <div class="tool-icon">🔍</div>
+              </div>
+              <div class="tool-meta">
+                <div class="tool-title">Image Upscale</div>
+                <p class="tool-desc">Sharpen and enlarge an image to 2K or 4K with AI.</p>
+              </div>
+            </div>
+
+            <div class="tool-card">
+              <div class="tool-art">
+                <div class="gradient gr-image"></div><div class="pattern"></div><div class="glow"></div>
+                <div class="badges"><span class="badge">IMAGE</span></div>
+                <div class="tool-icon">🖌️</div>
+              </div>
+              <div class="tool-meta">
+                <div class="tool-title">Image Background</div>
+                <p class="tool-desc">Swap an image's background for a color or another image.</p>
+              </div>
+            </div>
+
+            <div class="tool-card">
+              <div class="tool-art">
+                <div class="gradient gr-image"></div><div class="pattern"></div><div class="glow"></div>
+                <div class="badges"><span class="badge">IMAGE</span></div>
+                <div class="tool-icon">🙈</div>
+              </div>
+              <div class="tool-meta">
+                <div class="tool-title">Face Blur (Image)</div>
+                <p class="tool-desc">Blur faces in an image for privacy.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ======= Showcase ======= -->
+        <section class="section">
+          <div class="section-head">
+            <div>
+              <div class="section-title">Community showcase</div>
+              <p class="section-sub">A glimpse at what creators have been generating this week.</p>
+            </div>
+            <a class="section-link" href="#">Browse all →</a>
+          </div>
+          <div class="showcase">
+            <div class="showcase-card">
+              <div class="art" style="background: linear-gradient(135deg, #ff6b6b, #c71585, #4a0080);"></div>
+              <span class="tag">T2V</span>
+              <div class="overlay"><div class="caption">Neon rooftop drone — Istanbul</div></div>
+            </div>
+            <div class="showcase-card">
+              <div class="art" style="background: linear-gradient(135deg, #0ea5e9, #6366f1, #a101ff);"></div>
+              <span class="tag">AVATAR</span>
+              <div class="overlay"><div class="caption">CEO welcome message, Turkish voice</div></div>
+            </div>
+            <div class="showcase-card">
+              <div class="art" style="background: linear-gradient(135deg, #f59e0b, #ef4444, #b83a8d);"></div>
+              <span class="tag">MOTION</span>
+              <div class="overlay"><div class="caption">Dance remake with brand mascot</div></div>
+            </div>
+            <div class="showcase-card">
+              <div class="art" style="background: linear-gradient(135deg, #10b981, #0891b2, #6d28d9);"></div>
+              <span class="tag">I2V</span>
+              <div class="overlay"><div class="caption">Product photo → 5s rotating hero</div></div>
+            </div>
+            <div class="showcase-card">
+              <div class="art" style="background: linear-gradient(135deg, #a101ff, #ec4899, #ff9a56);"></div>
+              <span class="tag">T2I</span>
+              <div class="overlay"><div class="caption">Sci-fi course cover art</div></div>
+            </div>
+            <div class="showcase-card">
+              <div class="art" style="background: linear-gradient(135deg, #312e81, #a101ff, #f0a93b);"></div>
+              <span class="tag">STUDIO</span>
+              <div class="overlay"><div class="caption">4-scene product explainer, 20s</div></div>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <script src="assets/app.js"></script>
+</body>
+</html>

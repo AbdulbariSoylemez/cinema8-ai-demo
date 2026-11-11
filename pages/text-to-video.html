@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Text to Video · Cinema8 AI</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/style.css" />
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar">
+      <a href="../index.html" class="brand" style="cursor:pointer">
+        <div class="brand-mark">C8</div>
+        <span>Cinema8 AI</span>
+      </a>
+      <div class="nav-section">
+        <div class="nav-label">Create</div>
+        <a href="../index.html" class="nav-item"><span class="icon">🏠</span> Home</a>
+        <a href="video-studio.html" class="nav-item"><span class="icon">🎬</span> AI Video Studio <span class="pill">NEW</span></a>
+        <a href="text-to-video.html" class="nav-item active"><span class="icon">🎥</span> Text to Video</a>
+        <a href="image-to-video.html" class="nav-item"><span class="icon">🖼️</span> Image to Video</a>
+        <a href="motion-transfer.html" class="nav-item"><span class="icon">🕺</span> Motion Transfer <span class="pill">BETA</span></a>
+        <a href="avatar.html" class="nav-item"><span class="icon">👤</span> AI Avatar</a>
+      </div>
+      <div class="nav-section">
+        <div class="nav-label">Enhance</div>
+        <div class="nav-item"><span class="icon">🔊</span> AI Dubbing</div>
+        <div class="nav-item"><span class="icon">🎙️</span> Text to Speech</div>
+        <div class="nav-item"><span class="icon">🎤</span> Voice Clone</div>
+      </div>
+      <div class="nav-section">
+        <div class="nav-label">Image</div>
+        <div class="nav-item"><span class="icon">✨</span> Text to Image</div>
+        <div class="nav-item"><span class="icon">🖌️</span> Background</div>
+      </div>
+    </aside>
+
+    <div class="main">
+      <header class="topbar">
+        <div class="breadcrumb">
+          <a href="../index.html">AI Tools</a>
+          <span class="sep">›</span>
+          <span>Text to Video</span>
+        </div>
+        <div class="top-actions">
+          <div class="credits"><span>🪙</span> <strong>248,500</strong> tokens</div>
+          <div class="avatar-chip">AB</div>
+        </div>
+      </header>
+
+      <main class="content">
+        <div class="hero" style="padding: 10px 0 24px; text-align:left;">
+          <h1 style="font-size:24px; background:none; -webkit-background-clip: initial; color: var(--text);">Text to Video</h1>
+          <p style="margin:6px 0 0;">Describe a scene — camera moves, lighting, action — and get a 5–10s clip.</p>
+        </div>
+
+        <div class="tool-page">
+          <!-- Left: composer -->
+          <section class="panel">
+            <h2>Describe your scene</h2>
+            <p class="panel-sub">Specific camera, subject and lighting cues give the best results.</p>
+
+            <div class="field">
+              <label>Prompt</label>
+              <textarea placeholder="Cinematic drone shot flying low over a neon-lit Istanbul rooftop at dusk, camera slowly pushing forward, soft lens flare…">Cinematic drone shot flying low over a neon-lit Istanbul rooftop at dusk, camera slowly pushing forward, soft lens flare.</textarea>
+            </div>
+
+            <div class="field">
+              <label>Negative prompt (optional)</label>
+              <input type="text" placeholder="blurry, low quality, distorted faces" />
+            </div>
+
+            <div class="field-row">
+              <div class="field">
+                <label>Model</label>
+                <select>
+                  <option>Seedance 1 Pro</option>
+                  <option>Veo 3</option>
+                  <option>Luma Ray 3.2</option>
+                  <option>Kling 2.5</option>
+                </select>
+              </div>
+              <div class="field">
+                <label>Aspect</label>
+                <select>
+                  <option>16:9 (Widescreen)</option>
+                  <option>9:16 (Vertical)</option>
+                  <option>1:1 (Square)</option>
+                  <option>4:3</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="field-row">
+              <div class="field">
+                <label>Length</label>
+                <select>
+                  <option>5 seconds</option>
+                  <option>8 seconds</option>
+                  <option>10 seconds</option>
+                </select>
+              </div>
+              <div class="field">
+                <label>Resolution</label>
+                <select>
+                  <option>1080p</option>
+                  <option>720p</option>
+                  <option>480p</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="actions-row">
+              <button class="btn btn-primary" data-generate>✨ Generate video</button>
+              <button class="btn btn-ghost">Save preset</button>
+              <span class="cost-chip">≈ <strong>1,400</strong> tokens</span>
+            </div>
+
+            <div class="note">
+              Jobs run asynchronously. You can close this tab and we'll keep the result in your Library for 7 days.
+            </div>
+          </section>
+
+          <!-- Right: output -->
+          <section class="panel output">
+            <h2>Output</h2>
+            <p class="panel-sub">Your generated clip will appear here.</p>
+
+            <div class="output-stage">
+              <div class="output-empty">
+                <div class="icon">🎬</div>
+                Nothing generated yet
+              </div>
+              <div class="output-loading">
+                Generating your clip…
+                <div class="bar"></div>
+              </div>
+              <div class="output-result">
+                <!-- Mock gradient result, no external asset -->
+                <div style="width:100%; height:100%; background: linear-gradient(135deg, #ff6b6b, #c71585, #4a0080); display:flex; align-items:center; justify-content:center; color:white; font-weight:600;">
+                  Mock video preview · Neon rooftop drone
+                </div>
+              </div>
+            </div>
+
+            <div class="output-foot">
+              <span>Seedance 1 Pro · 5s · 16:9</span>
+              <div style="display:flex; gap:8px;">
+                <button class="btn btn-ghost">⤓ Download</button>
+                <button class="btn btn-ghost">Save</button>
+              </div>
+            </div>
+          </section>
+        </div>
+      </main>
+    </div>
+  </div>
+  <script src="../assets/app.js"></script>
+</body>
+</html>
