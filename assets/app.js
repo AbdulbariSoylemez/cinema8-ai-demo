@@ -203,16 +203,6 @@
       ],
     },
     {
-      key: 'seedance',
-      title: 'Text to Video',
-      gradient: ['#F94F6F', '#A101FF'],
-      items: [
-        { id: 's-1', title: 'FER Phase 1', size: 'square', plays: 28300, videoUrl: `${S3}/seedance-2-5/fer_phase1.mp4` },
-        { id: 's-2', title: 'Realface Auto', size: 'square', plays: 41800, videoUrl: `${S3}/seedance-2-5/realface_auto.mp4` },
-        { id: 's-3', title: 'Yucel 21s', size: 'square', plays: 52400, videoUrl: `${S3}/seedance-2-5/yucel_21s.mp4` },
-      ],
-    },
-    {
       key: 'marketingStudio',
       title: 'AI Video Studio',
       gradient: ['#FF8D10', '#E91F54'],
@@ -290,7 +280,6 @@
     'trending',
     'gptImage2',
     'motions',
-    'seedance',
     'marketingStudio',
     'avatar',
   ];
@@ -363,14 +352,6 @@
         toolIcon: '✨',
         inputs: [
           { kind: 'prompt', label: 'Prompt', hint: 'Oluşturulacak görseli tarif et.', sample: 'A sci-fi course cover: deep indigo nebula, holographic textbook floating, soft rim light.' },
-        ],
-      },
-      seedance: {
-        page: 'pages/text-to-video.html',
-        toolLabel: 'Text to Video',
-        toolIcon: '🎥',
-        inputs: [
-          { kind: 'prompt', label: 'Prompt', hint: 'Sahneyi, kamerayı ve ışığı tarif et.', sample: 'Cinematic drone shot flying low over a neon-lit Istanbul rooftop at dusk.' },
         ],
       },
       marketingStudio: {
