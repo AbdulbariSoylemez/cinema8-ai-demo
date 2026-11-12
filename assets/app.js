@@ -254,9 +254,9 @@
     const cards = cat.items.map((item) => {
       const sizeCls = 'ex-' + (item.size || 'tall');
       let mediaHtml = '';
-      let dataAttrs = '';
+      let dataAttrs = ` data-cat="${cat.key}" data-item-id="${item.id}"`;
       if (item.videoUrl) {
-        dataAttrs = ` data-video="${item.videoUrl}"`;
+        dataAttrs += ` data-video="${item.videoUrl}"`;
         mediaHtml = '<video class="ex-media" muted loop playsinline preload="none"></video>';
       } else if (item.imageUrl) {
         mediaHtml = `<img class="ex-media" src="${item.imageUrl}" alt="${item.title}" loading="lazy">`;
@@ -333,6 +333,214 @@
       } else {
         ensureSrc();
       }
+    });
+
+    // ---- Recreate modal ----
+    // Per-category recipe: which tool page, and what inputs that tool needs so
+    // the modal can show "this is how it was made, here's what to supply".
+    const TOOL_RECIPE = {
+      trending: {
+        page: 'pages/motion-transfer.html',
+        toolLabel: 'Motion Transfer',
+        toolIcon: '🕺',
+        inputs: [
+          { kind: 'video-ref',   label: 'Referans motion videosu', hint: 'Hareket ve kadraj bu videodan kopyalanır.' },
+          { kind: 'upload-image', label: 'Karakter görseli', hint: 'Sahnedeki kişi/nesnenin yerine geçecek görseli yükle.' },
+        ],
+      },
+      motions: {
+        page: 'pages/motion-transfer.html',
+        toolLabel: 'Motion Transfer',
+        toolIcon: '🕺',
+        inputs: [
+          { kind: 'video-ref',    label: 'Referans motion videosu', hint: 'Hareket ve kadraj bu videodan kopyalanır.' },
+          { kind: 'upload-image', label: 'Karakter görseli', hint: 'Sahnedeki kişi/nesnenin yerine geçecek görseli yükle.' },
+        ],
+      },
+      gptImage2: {
+        page: 'pages/text-to-image.html',
+        toolLabel: 'Text to Image',
+        toolIcon: '✨',
+        inputs: [
+          { kind: 'prompt', label: 'Prompt', hint: 'Oluşturulacak görseli tarif et.', sample: 'A sci-fi course cover: deep indigo nebula, holographic textbook floating, soft rim light.' },
+        ],
+      },
+      seedance: {
+        page: 'pages/text-to-video.html',
+        toolLabel: 'Text to Video',
+        toolIcon: '🎥',
+        inputs: [
+          { kind: 'prompt', label: 'Prompt', hint: 'Sahneyi, kamerayı ve ışığı tarif et.', sample: 'Cinematic drone shot flying low over a neon-lit Istanbul rooftop at dusk.' },
+        ],
+      },
+      marketingStudio: {
+        page: 'pages/video-studio.html',
+        toolLabel: 'AI Video Studio',
+        toolIcon: '🎬',
+        inputs: [
+          { kind: 'prompt',       label: 'Kampanya özeti', hint: 'Ürün, hedef kitle, ton ve çağrı.' },
+          { kind: 'upload-image', label: 'Ürün / marka görseli', hint: 'Studio sahneleri için referans görseli yükle.' },
+        ],
+      },
+      avatar: {
+        page: 'pages/avatar.html',
+        toolLabel: 'AI Avatar',
+        toolIcon: '👤',
+        inputs: [
+          { kind: 'avatar-ref', label: 'Avatar karakteri', hint: 'Bu avatar seçili başlayacak.' },
+          { kind: 'script',     label: 'Konuşma scripti',  hint: 'Avatarın söyleyeceği metin.' },
+        ],
+      },
+    };
+
+    const byKeyForLookup = byKey;
+    const findItem = (catKey, itemId) => {
+      const cat = byKeyForLookup[catKey];
+      if (!cat) return null;
+      return cat.items.find((it) => it.id === itemId) || null;
+    };
+
+    // Build + mount the modal once; reuse on every open.
+    const modal = document.createElement('div');
+    modal.className = 'rm-modal';
+    modal.hidden = true;
+    modal.innerHTML = `
+      <div class="rm-backdrop" data-close></div>
+      <div class="rm-panel" role="dialog" aria-modal="true" aria-label="Recreate">
+        <button class="rm-close" data-close aria-label="Close">✕</button>
+        <div class="rm-preview"></div>
+        <div class="rm-body">
+          <div class="rm-head">
+            <span class="rm-tool-badge"></span>
+            <h2 class="rm-title"></h2>
+          </div>
+          <div class="rm-inputs">
+            <h3>Girdiler</h3>
+            <div class="rm-input-grid"></div>
+          </div>
+          <div class="rm-actions">
+            <button class="btn btn-primary rm-recreate">✨ Recreate</button>
+            <span class="rm-sub">Recreate butonu seni ilgili AI tool sayfasına götürür.</span>
+          </div>
+        </div>
+      </div>
+    `;
+    document.body.appendChild(modal);
+
+    const elPreview   = modal.querySelector('.rm-preview');
+    const elTitle     = modal.querySelector('.rm-title');
+    const elBadge     = modal.querySelector('.rm-tool-badge');
+    const elInputGrid = modal.querySelector('.rm-input-grid');
+    const elRecreate  = modal.querySelector('.rm-recreate');
+
+    const renderInputSlot = (slot, item) => {
+      switch (slot.kind) {
+        case 'video-ref':
+          return `
+            <div class="rm-slot rm-slot--media">
+              <div class="rm-slot-media">
+                <video src="${item.videoUrl || ''}" muted loop playsinline autoplay></video>
+                <span class="rm-slot-tag">Referans</span>
+              </div>
+              <div class="rm-slot-meta">
+                <div class="rm-slot-label">${slot.label}</div>
+                <div class="rm-slot-hint">${slot.hint}</div>
+              </div>
+            </div>`;
+        case 'avatar-ref':
+          return `
+            <div class="rm-slot rm-slot--media">
+              <div class="rm-slot-media">
+                <video src="${item.videoUrl || ''}" muted loop playsinline autoplay></video>
+                <span class="rm-slot-tag">Seçili avatar</span>
+              </div>
+              <div class="rm-slot-meta">
+                <div class="rm-slot-label">${slot.label}</div>
+                <div class="rm-slot-hint">${slot.hint}</div>
+              </div>
+            </div>`;
+        case 'upload-image':
+          return `
+            <div class="rm-slot rm-slot--upload">
+              <div class="rm-slot-dropzone">
+                <div class="rm-dz-icon">⬆</div>
+                <div class="rm-dz-text">Görsel sürükle veya seç</div>
+              </div>
+              <div class="rm-slot-meta">
+                <div class="rm-slot-label">${slot.label}</div>
+                <div class="rm-slot-hint">${slot.hint}</div>
+              </div>
+            </div>`;
+        case 'prompt':
+        case 'script':
+        default: {
+          const sample = slot.sample || '';
+          return `
+            <div class="rm-slot rm-slot--text">
+              <textarea class="rm-slot-text" rows="4" placeholder="${slot.hint}">${sample}</textarea>
+              <div class="rm-slot-meta">
+                <div class="rm-slot-label">${slot.label}</div>
+                <div class="rm-slot-hint">${slot.hint}</div>
+              </div>
+            </div>`;
+        }
+      }
+    };
+
+    const openModal = (card) => {
+      const catKey = card.dataset.cat;
+      const itemId = card.dataset.itemId;
+      const recipe = TOOL_RECIPE[catKey];
+      const item = findItem(catKey, itemId);
+      if (!recipe || !item) return;
+
+      // Preview
+      if (item.videoUrl) {
+        elPreview.innerHTML = `<video src="${item.videoUrl}" muted loop playsinline autoplay></video>`;
+      } else if (item.imageUrl) {
+        elPreview.innerHTML = `<img src="${item.imageUrl}" alt="${item.title}">`;
+      } else {
+        elPreview.innerHTML = '';
+      }
+
+      // Header
+      elTitle.textContent = item.title;
+      elBadge.innerHTML = `<span class="rm-badge-icon">${recipe.toolIcon}</span> ${recipe.toolLabel}`;
+
+      // Inputs
+      elInputGrid.innerHTML = recipe.inputs.map((slot) => renderInputSlot(slot, item)).join('');
+
+      // Recreate target
+      elRecreate.dataset.target = recipe.page;
+
+      modal.hidden = false;
+      document.body.style.overflow = 'hidden';
+    };
+
+    const closeModal = () => {
+      modal.hidden = true;
+      document.body.style.overflow = '';
+      // Stop any playing media inside the modal to free bandwidth.
+      modal.querySelectorAll('video').forEach((v) => { try { v.pause(); } catch (e) {} });
+      elPreview.innerHTML = '';
+      elInputGrid.innerHTML = '';
+    };
+
+    exploreRoot.addEventListener('click', (e) => {
+      const card = e.target.closest('.ex-card');
+      if (!card || !exploreRoot.contains(card)) return;
+      openModal(card);
+    });
+
+    modal.addEventListener('click', (e) => {
+      if (e.target.matches('[data-close]')) closeModal();
+    });
+    document.addEventListener('keydown', (e) => {
+      if (!modal.hidden && e.key === 'Escape') closeModal();
+    });
+    elRecreate.addEventListener('click', () => {
+      const target = elRecreate.dataset.target;
+      if (target) window.location.href = target;
     });
   }
 })();
