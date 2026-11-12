@@ -134,7 +134,7 @@
       // the ready recipes the Motion Transfer tool ships with. Each row's
       // preview mp4 is public and plays in place on hover.
       key: 'trending',
-      title: 'Trending',
+      title: 'Video Generate',
       gradient: ['#E91F54', '#FF8D10', '#A101FF'],
       items: [
         { id: 'golden-hour', title: 'Golden Hour', size: 'portrait', plays: 412000, videoUrl: `${S3}/reskin/recreate/1cf784d1bb0d45dd959672569422fe5c.mp4` },
@@ -160,7 +160,7 @@
     },
     {
       key: 'gptImage2',
-      title: 'GPT Image 2',
+      title: 'Image Generate',
       gradient: ['#28B851', '#1900FA'],
       items: [
         { id: 'g-heirloom', title: 'Heirloom · Ceramics Hero', size: 'wide', plays: 48200, imageUrl: `${S3}/gpt-image-2/heirloom_ceramics.png` },
@@ -178,7 +178,7 @@
     {
       // Mirror of Trending — every entry is a Motion Transfer result.
       key: 'motions',
-      title: 'Motions',
+      title: 'Motion Transfer',
       gradient: ['#A780FF', '#5B0180'],
       items: [
         { id: 'r-golden-hour', title: 'Golden Hour', size: 'portrait', plays: 412000, videoUrl: `${S3}/reskin/recreate/1cf784d1bb0d45dd959672569422fe5c.mp4` },
@@ -204,7 +204,7 @@
     },
     {
       key: 'seedance',
-      title: 'Seedance 2.5',
+      title: 'Text to Video',
       gradient: ['#F94F6F', '#A101FF'],
       items: [
         { id: 's-1', title: 'FER Phase 1', size: 'square', plays: 28300, videoUrl: `${S3}/seedance-2-5/fer_phase1.mp4` },
@@ -214,7 +214,7 @@
     },
     {
       key: 'marketingStudio',
-      title: 'Marketing Studio',
+      title: 'AI Video Studio',
       gradient: ['#FF8D10', '#E91F54'],
       items: [
         { id: 'mk-ugc-unboxing', title: 'UGC · Unboxing', size: 'tall', plays: 128400, videoUrl: `${PROD}/ugc_unboxing_example.mp4` },
@@ -228,7 +228,7 @@
     },
     {
       key: 'avatar',
-      title: 'Avatars',
+      title: 'AI Avatar',
       gradient: ['#427BFF', '#1600D5'],
       items: [
         { id: 'av-1', title: 'Gobi One — confident presenter', size: 'portrait', plays: 24300, videoUrl: `${CDN}/07GHT7woXGqyDn43Y06cSKN_FYW_96RcbABsxASLdx7Ka2nNpvu-W0zEW2a_96hU/media.mp4` },
