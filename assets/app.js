@@ -18,7 +18,6 @@
       if (input) {
         const examples = {
           'text-to-video': 'A cinematic drone shot flying over a neon-lit Istanbul rooftop at dusk, camera slowly pushing forward…',
-          'image-to-video': 'Animate the attached photo — subtle parallax, camera pushing in, light breeze on the hair.',
           'motion-transfer': 'Keep the moves of the source video and rebuild it with the uploaded character images.',
           'avatar': 'Script the avatar will speak. 1-2 sentences work best.',
           'text-to-image': 'A sci-fi course cover: deep indigo nebula, holographic textbook floating, soft rim light.',
